@@ -1,5 +1,5 @@
 class Hexagon {
-    onstructor(x,y,radius){
+    constructor(x,y,radius){
         var options = {
             'density':0.5,
             'restitution':0.8,

@@ -3,6 +3,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Constraint = Matter.Constraint;
 var radius = 20;
 
 function preload()
@@ -73,7 +74,9 @@ function setup() {
     box51 = new Box (690,114);
     box52 = new Box (720,114);
 	box53 = new Box (570,114);
-	hexagon1 = new Hexagon(200,100,radius)
+    hexagon1 = new Hexagon(100,600,radius)
+    chain = new Sling(hexagon1.body,{x:95,y:590});
+    
 	Engine.run(engine);
   
 }
@@ -140,8 +143,15 @@ function draw() {
   box52.display();
   box53.display();
   hexagon1.display();
+  chain.display();
 
 }
-
+function mouseDragged(){
+    Matter.Body.setPosition(hexagon1.body,{x:mouseX,y:mouseY})   
+   }
+   
+function mouseReleased(){
+    chain.fly();
+}
 
 
